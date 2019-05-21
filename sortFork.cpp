@@ -30,10 +30,10 @@ void startProcesses(int array[], int size, int **fd, int CORE) {
 			CPU_ZERO( &mask );
 			CPU_SET(i, &mask);
 			if (i != CORE - 1) {
-				buble(array + i * (size / CORE), size / CORE, fd[i][1]);
+				bubble(array + i * (size / CORE), size / CORE, fd[i][1]);
 			}
 			else {
-				buble(array + i * (size / CORE), size - i * (size / CORE), fd[i][1]);
+				bubble(array + i * (size / CORE), size - i * (size / CORE), fd[i][1]);
 			}
 			close(fd[i][1]);
 			exit(0);
