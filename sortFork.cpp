@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <sched.h>
 
-void buble(int *array, int n, int fdWrite) {
+void bubble(int *array, int n, int fdWrite) {
 	for (int i = 0; i < n; ++i) {
 		for (int j = 0; j < n - i - 1; ++j) {
 			if (array[j] < array[j + 1]) {
