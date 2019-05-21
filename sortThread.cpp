@@ -4,7 +4,7 @@
 #include <unistd.h>
 #include <sched.h>
 
-void buble(int *array, int n, int fdWrite, int coreNumber) {
+void bubble(int *array, int n, int fdWrite, int coreNumber) {
 	cpu_set_t mask;
 	CPU_ZERO( &mask );
 	CPU_SET(coreNumber, &mask);
@@ -84,11 +84,11 @@ int main() {
 	}
 	for (int i = 0; i < CORE; ++i) {
 		if (i != CORE - 1) {
-			std::thread thr(buble, array + i * (size / CORE), size / CORE, fd[i][1], i);
+			std::thread thr(bubble, array + i * (size / CORE), size / CORE, fd[i][1], i);
 			thr.detach();
 		}
 		else {
-			std::thread thr(buble, array + i * (size / CORE), size - i * (size / CORE), fd[i][1], i);
+			std::thread thr(bubble, array + i * (size / CORE), size - i * (size / CORE), fd[i][1], i);
 			thr.detach();
 		}
 	}
